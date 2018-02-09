@@ -1,0 +1,124 @@
+
+<div class="jumbotron">
+      <div class="container search">
+        <h1>Find A Movie</h1>
+        <p>Search for a movie using the form below</p>
+        <form (submit)="searchMovies()">
+          <input type="text" class="form-control" [(ngModel)]="searchStr" name="searchStr">
+          <br>
+          <button class="btn btn-primary btn-md">Find</button>
+        </form>
+      </div>
+    </div>
+
+<!--
+          <div class="panel panel-default">
+             <div class="panel-heading">
+               <h3 class="panel-title">Genres</h3>
+               </div>
+
+                 <div class="panel-body">
+                    <div class="row">
+                          <div *ngFor="let genre of genres;" class=" col-xs-6 col-sm-3 col-md-2 list-comma">
+                             <a id="genLink" routerLink="/genre/{{genre.id}}">{{genre.name}}</a>
+                          </div>
+                    </div>
+                 </div>
+             </div>
+             -->
+ 
+    <!--
+    <div class="jumbotron">
+      <div class="container">
+        <h2>Search for movies playing in your area</h2>
+        <p>Enter zip code:</p>
+        <form (submit)="findZip()">
+          <input type="text" class="form-control" [(ngModel)]="searchZip" name="searchZip">
+          <br>
+          <button class="btn btn-primary btn-md">search</button>
+        </form>
+      </div>
+      </div>
+      -->
+    <div *ngIf="searchRes" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Search Results</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of searchRes; let i = index" class=" col-xs-6 col-sm-3 col-md-2">
+       <div *ngIf="i <= 30">
+            <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4>{{movie.title}}</h4>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<!--
+    <div *ngIf="zipSearch" class="panel panel-default">
+  <div class="panel-heading ">
+    <h4 class="panel-title">Movies playing near zip code {{searchZip}}</h4>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of zipSearch" class=" col-xs-6 col-sm-3 col-md-2">
+       <div>
+       <img *ngIf="movie.preferredImage.uri" class="thumbnail" src="http://developer.tmsimg.com/{{movie.preferredImage.uri}}?api_key={{api}}"/>
+            <h4>{{movie.title}}</h4>
+            <p>{{movie.releaseDate | date}}</p>
+            <p><a class="btn btn-default" routerLink="/movies/{{movie.rootId}}/{{searchZip}}">View Details</a></p>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Now Playing</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+
+      <div *ngFor="let movie of theatersList; let i = index" class=" col-xs-6 col-sm-3 col-md-2 imgs">
+          <div *ngIf="i < 25">
+          
+            <div class="noPath">
+
+                   <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path === null" class="thumbnail" src="http://i65.tinypic.com/swajhz.jpg" ></a>
+               </div>
+
+              <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4>{{movie.title}}</h4>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ad"><iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=288&l=ur1&category=hotnewreleases&banner=1HNM1EVYY12R5JNA9YR2&f=ifr&linkID=e79a85450862cc36d984ab2949a1091e&t=moasis1000-20&tracking_id=moasis1000-20" width="320" height="50" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+</div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Popular Movies</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div *ngFor="let movie of popularList; let i = index" class=" col-xs-6 col-sm-3 col-md-2 imgs">
+          <div *ngIf="i < 25" test>
+               <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4>{{movie.title}}</h4>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

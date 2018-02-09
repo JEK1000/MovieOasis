@@ -1,0 +1,69 @@
+
+
+       <div class="panel panel-default">
+             <div class="panel-heading">
+               <h3 class="panel-title">Genres:</h3>
+               </div>
+
+                 <div class="panel-body">
+                    <div class="row">
+
+                          <div *ngFor="let genres of genre;" class=" col-xs-6 col-sm-3 col-md-2">
+                             <a class="genLink" routerLink="/genre/{{genres.id}}">{{genres.name}}</a>
+                          </div>
+                    </div>
+                 </div>
+             </div>
+
+   <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"></h3>
+    </div>
+  <div class="panel-body">
+    <div class="row">
+     
+       <div class="col-xs-6 col-sm-3 col-md-2 imgs" *ngFor="let movie of genres.results;">
+            <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4 class="movieTitle">{{movie.title}}</h4>
+            </div>
+
+             <div class="col-xs-6 col-sm-3 col-md-2 imgs" *ngFor="let movie of genres2.results;">
+            <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4 class="movieTitle">{{movie.title}}</h4>
+             </div>
+
+               <div class="col-xs-6 col-sm-3 col-md-2 imgs" *ngFor="let movie of genres3.results;">
+            <a routerLink="/movie/{{movie.id}}"><img *ngIf="movie.poster_path" class="thumbnail" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}" ></a>
+            <h4 class="movieTitle">{{movie.title}}</h4>
+             </div>
+
+      </div>
+      </div>
+ <!--
+    <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item active"><a class="page-link" routerLink="/genre/{{genres.id}}">1</a></li>
+    <li class="page-item"><a class="page-link">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+-->
+   </div>
+
+   
+  
+  
+ 
+

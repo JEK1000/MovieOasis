@@ -1,0 +1,218 @@
+
+<div *ngIf="movie">
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<h3 class="panel-title">{{movie.title}}</h3>
+		</div>
+		<div class="panel-body" >
+			<div class="row">
+			<div class="col-md-7 col-sm-7 col-xs-12 ">
+                 
+                 <div class="displayNone" *ngIf="movie.poster_path === null">
+                    <img style="display:none;">
+                 </div>
+                 
+                 <div class="posterShow" *ngIf="movie.poster_path !== null">
+				    <img class="thumbnail movie_pic" src="http://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+				 </div>
+
+				<h2 class="htwo">Cast</h2>
+				<div *ngIf="cast" class="cast">
+					<div class="list-group">
+   				 		<div class="castScroll" *ngFor="let actor of cast.cast let i = index;">
+
+                        
+   				 				    <div *ngIf="actor.profile_path === null">
+   				 					 <div class="castDiv2" *ngIf="i <=5">
+   				 					      <img src="http://i64.tinypic.com/29wx15f.jpg"/>
+   				 					         <h4 class="mb-1">{{actor.name}}</h4>
+      								       <p>Character:<br>{{actor.character}}</p>
+                                         </div>
+   				 					  </div>
+   				 			
+
+   				 		<div *ngIf="actor.profile_path !== null">
+   				 	     <div class="castDiv" *ngIf="i <=5">
+   				 		   <img src="http://image.tmdb.org/t/p/w500/{{actor.profile_path}}">
+      						   <h4>{{actor.name}}</h4>
+      						 <p>Character:<br>{{actor.character}}</p>
+      						 </div>
+      					  </div>
+    					</div>
+    					</div>
+				</div>
+
+				<!--
+					<img  class="thumbnail movie_pic" src="http://developer.tmsimg.com/{{show[0].preferredImage.uri}}?api_key={{api}}"><br>
+					</div>
+					-->
+
+	
+
+				</div>
+
+				<div class="col-md-5 col-sm-5 col-xs-12">
+				
+					<ul class="list-group">
+					<li class="list-group-item genres">Genres: <span *ngFor="let genre of movie.genres"><a class="genreLink"routerLink="/genre/{{genre.id}}">{{genre.name}}</a> </span></li>
+						<li class="list-group-rel overview overview">{{movie.overview}}</li>
+						<br>
+
+						<li class="list-group-rel">Release Date: {{movie.release_date | date}}</li>
+						</ul><br>
+						<div class="buyMovie">
+						<a *ngIf="movie.homepage" href="{{movie.homepage}}" target="blank" class="btn btn-default">Vist Website</a>
+
+						<a class="btn btn-default" target="_blank" href="{{updateLink(movie.title)}}">Buy Movie</a>
+						<img src="//ir-na.amazon-adsystem.com/e/ir?t=moasis1000-20&l=ur2&o=1" width="1" height="1" 
+						border="0" alt="" style="border:none !important; margin:0px !important;" />
+						</div>
+						
+
+						<h2 class="htwoVid">Movie Trailers</h2>
+
+							<div class="noMov" *ngIf="videos.results.length === 0">
+
+							    <p>No trailer results at this time</p>
+								
+							</div>
+	
+						<div class="video" *ngFor="let video of videos.results let i = index;">
+						 <div class="noTrailer" *ngIf="video ">
+						
+						<iframe *ngIf="i < 4;"class="videos" width="520" height="215" allowfullscreen scrolling="no"
+						[src]="updateUrl(video.key)">
+						
+						</iframe>
+						<br>
+						</div>
+						</div>
+							<h2 class="htwo3">Cast</h2>
+						<div class="cast2">
+							<div class="list-group">
+					
+   				 				<div class="castScroll2" *ngFor="let actor of cast.cast let i = index;">
+                                   <div *ngIf="i <= 5">
+   				 				    <div class="castDiv2" *ngIf="actor.profile_path === null">
+   				 					
+   				 					  <img src="http://i64.tinypic.com/29wx15f.jpg"/>
+   				 					    <h4 class="mb-1">{{actor.name}}</h4>
+      									  <p>Character:<br>{{actor.character}}</p>
+
+   				 					  </div>
+   				 					  </div>
+
+   				 					    <div class="castDiv2" *ngIf="actor.profile_path !== null" >
+                                         <div *ngIf="i <= 5">
+   				 					      <img src="http://image.tmdb.org/t/p/w500/{{actor.profile_path}}">
+      									   <h4 class="mb-1">{{actor.name}}</h4>
+      									  <p>Character:<br>{{actor.character}}</p>
+                                         </div>
+      									</div>
+      								</div>
+      						
+    							</div>
+    						</div>
+				    	
+
+						<h2 class="htwo2">Similar Movies</h2>
+						
+						<div class="similar2" *ngIf="similar.total_results === 0">
+
+						 <p>No similar movies at this time</p>
+
+						  </div>	
+
+                     <div class="similar2" *ngIf="similar.total_results > 0">
+					 <div class="imgScroll" *ngFor="let sim of similar.results">	
+
+					 <a routerLink="/movie/{{sim.id}}"><img class="thumbnail " src="http://image.tmdb.org/t/p/w500/{{sim.poster_path}}"></a>
+
+
+
+					 </div>
+					 </div>
+
+	
+					
+				
+					</div>
+	
+
+				<!--
+				<div class="what">
+				
+					<ul class="list-group">
+					<li class="list-group-item">Genres: {{show[0].genres}}</li>
+						<li class="list-group-rel">{{show[0].longDescription}}</li>
+						<br>
+						<li class="list-group-rel">Release Date: {{show[0].releaseDate}}</li>
+						</ul>
+					</div>
+					
+			
+	
+			
+						<h2>Showtimes</h2>
+				<div class="card"style="width:20rem;">
+					 <div class="card-header"></div>
+			
+ 						 <div *ngFor="let obj of show">
+							<div *ngFor="let time of getShowtimes(obj)">{{time}}</div>
+						
+    					</div>
+    					</div>
+
+    					-->
+
+				
+					</div>
+
+
+					<h2 class="htwoSim">Similar Movies</h2>
+
+					<div class="similar" *ngIf="similar.total_results === 0">
+
+					   <p>No similar movies at this time</p>
+
+				    </div>
+
+
+					<div class="similar" >
+					 <div class="imgScroll" *ngFor="let sim of similar.results">
+
+					<a routerLink="/movie/{{sim.id}}"><img class="thumbnail " src="http://image.tmdb.org/t/p/w500/{{sim.poster_path}}"></a>
+
+					</div>
+					</div>
+
+
+
+	                        <h2 class="htwoReviews">Reviews</h2>
+	                        <div *ngIf="reviews.total_results > 0">
+							<div class="reviews" *ngFor="let review of reviews.results">
+
+							<p class="author" >{{review.author}}</p>
+							<p class="content">{{review.content}} </p>
+							<br><hr>
+				
+					     </div>
+					</div>
+
+					<div *ngIf="reviews.total_results === 0" id="noReviews" >No Reviews</div>
+
+				</div>
+				</div>
+
+
+		
+		
+ <!--*ngFor="let shows of show" -->
+
+	
+		
+		
+	
+
+

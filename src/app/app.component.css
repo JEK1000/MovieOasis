@@ -1,0 +1,37 @@
+footer{
+
+	text-align: center;
+}
+
+.ad{
+	text-align: center;
+}
+
+ 
+.sticky-nav-wrapper {
+  /* set min height on wrapper so that the page
+     doesn't awkwardly snap and lose height */
+ 
+  width: 100%;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+
+}
+ 
+.sticky-nav {
+
+   z-index:1;
+}
+
+
+.sticky-nav {
+  height: 40px;
+  width: 100%;
+}
+ 
+.sticky-box-shadow {
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.5);
+}
+
+.fixed{
+
+}
