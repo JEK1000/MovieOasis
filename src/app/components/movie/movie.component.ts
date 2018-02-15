@@ -26,7 +26,7 @@ export class MovieComponent implements OnInit {
   reviews: Object;
   //show: Object;
 $: any;
-  //api :string = 'vtbsj472sc28rm5vb3agzs9n';
+  //api :string = '';
 
 
 
