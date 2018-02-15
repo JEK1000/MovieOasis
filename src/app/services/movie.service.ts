@@ -19,7 +19,7 @@ export class MovieService{
    
 	constructor(private _jsonp: Jsonp){
 
-		this.apikey='af57a2cf0f9c05106c9da8a49fdbcb44';
+		this.apikey='';
 		//this.key = 'vtbsj472sc28rm5vb3agzs9n';
 		console.log('movieService Initalized..');
 
