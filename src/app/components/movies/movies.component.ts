@@ -47,7 +47,7 @@ export class MoviesComponent implements OnInit {
       this.amazon = res.amazon;
       });
 
-      this.api ='vtbsj472sc28rm5vb3agzs9n';
+      this.api ='';
       
   }
 
