@@ -8,7 +8,7 @@ import { options } from '../auth.options';
 export class AuthService {
 
   auth0 = new auth0.WebAuth({
-    clientID: 'wXidPYf7bDtoRz1k5qh4w9LsVpKOfVrb',
+    clientID: '',
     domain: 'jek1000.auth0.com',
     responseType: 'token id_token',
     audience: 'https://jek1000.auth0.com/userinfo',
