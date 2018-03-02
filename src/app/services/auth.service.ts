@@ -9,10 +9,10 @@ export class AuthService {
 
   auth0 = new auth0.WebAuth({
     clientID: '',
-    domain: 'jek1000.auth0.com',
+    domain: '',
     responseType: 'token id_token',
-    audience: 'https://jek1000.auth0.com/userinfo',
-    redirectUri: 'http://localhost:4200',      
+    audience: '',
+    redirectUri: '',      
     scope: 'openid'
   });
 
